@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 5000;
 
-//db config
+//DB Connection
 mongoose.connect(
   process.env.DB_CONNECT,
   {
@@ -18,9 +18,16 @@ mongoose.connect(
   }
 )
 
+
+//Routes
 app.get('/', (req, res) => {
   res.send('Welcome Home');
 })
+const usersRoute = require('./routes/users');
+
+//middleware
+app.use('/users', usersRoute);
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Listening Server @ port: ${port}...`);
