@@ -2,18 +2,20 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  const [users, setusers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
+  const [session, setSession] = useState(null)
 
   useEffect(() => {
     console.log('inside useEffect. Fetching...')
-    fetch("http://localhost:5000/users/", 
-    { mode: "cors",
-      headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
-    .then(json => console.log(json))
+    async function fetchUsers() {
+      const fetchUsers = await fetch("http://localhost:5000/users/");
+      const jsonRes = await fetchUsers.json();
+      setUsers(jsonRes);
+    }
+    fetchUsers();
+  },[])
 
-  })
   return (
     <div className="App">
       <header className="App-header">

@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
 
 const app = express();
@@ -27,9 +26,9 @@ app.get('/', (req, res) => {
 const usersRoute = require('./routes/users');
 
 //middleware
-app.use(bodyParser.json());
-app.use('/users', usersRoute);
 app.use(cors());
+app.use(express.json());
+app.use('/users', usersRoute);
 
 app.listen(port, () => {
   console.log(`Listening Server @ port: ${port}...`);
