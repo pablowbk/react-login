@@ -9,20 +9,8 @@ import Login from './Login';
 import Register from './Register'
 
 function App() {
-  const [users, setUsers] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
   const [session, setSession] = useState(null);
-
-  const fetchUsers = async () => {
-    const fetchUsers = await fetch("http://localhost:5000/users/");
-    const jsonRes = await fetchUsers.json();
-    setUsers(jsonRes);
-  }
-
-  useEffect(() => {
-    console.log('inside useEffect. Fetching...')
-    fetchUsers();
-  },[])
 
   return (
     <BrowserRouter>

@@ -49,3 +49,84 @@ a {
   border-radius: 25px;
   border: 3px solid #666;
 }
+
+
+/* Register Component */
+.Register {
+  min-height: 70vh;
+  padding: 0 2rem;
+  margin-top: 3rem;
+  display: grid;  
+}
+
+.Register form {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.Register header {
+  align-self: end;
+  justify-self: start;
+}
+
+.Register form .input {
+  display: grid;
+  gap: 1em;
+  grid-template-areas: 'label input';
+  grid-template-columns: 1fr 3fr;
+}
+
+.Register form label {
+  grid-area: label;
+}
+
+.Register form input {
+  grid-area: input;
+}
+
+.Register button {
+  border: none;
+  font-size: 1.3rem;
+  padding: .5rem 1rem;
+  border-radius: 25px;
+  border: 3px solid #666;
+  cursor: pointer;
+}
+
+
+/* Login Component */
+.Login {
+  min-height: 70vh;
+  padding: 0 2rem;
+  margin-top: 3rem;
+  display: grid; 
+}
+
+.Login section {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.Login section h3 {
+  box-shadow: 0 2px 0px #666;
+}
+
+.Login section ul {
+  margin-top: 1rem;
+  list-style: none;
+  text-align: center;
+}
+
+.Login section li {
+  padding: .5rem;
+  font-weight: 600;
+  color: rgb(33, 62, 124);
+}
+
+.Login section ul li:nth-child(odd) {
+  background: #eee;
+}
