@@ -1,32 +1,38 @@
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+
+//components
+import Nav from './Nav'
+import Welcome from "./Welcome";
+import Login from './Login';
+import Register from './Register'
 
 function App() {
   const [users, setUsers] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState(null);
+
+  const fetchUsers = async () => {
+    const fetchUsers = await fetch("http://localhost:5000/users/");
+    const jsonRes = await fetchUsers.json();
+    setUsers(jsonRes);
+  }
 
   useEffect(() => {
     console.log('inside useEffect. Fetching...')
-    async function fetchUsers() {
-      const fetchUsers = await fetch("http://localhost:5000/users/");
-      const jsonRes = await fetchUsers.json();
-      setUsers(jsonRes);
-    }
     fetchUsers();
   },[])
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome, friend.</h1>
-        <section>
-          <h3>Login</h3>
-          <h3>Register</h3>
-        </section>
-      </header>
-      
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Switch>
+        <Route path='/' exact component={Welcome} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

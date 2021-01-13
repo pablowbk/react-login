@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     const users = await User.find();
     res.json(users);
     console.log(users)
+    console.log('users fetched!!')
   } catch (err) {
     res.json(console.log({message: err}))
   }
