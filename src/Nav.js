@@ -10,7 +10,7 @@ function Nav() {
       <h4>MERN App</h4>
       <ul className='nav-links'>
         {location.pathname !== '/' && <Link to='/'><li>Home</li></Link> }
-        {location.pathname === '/' && <Link to='/login'><li style={{marginRight:'1rem'}}>Login</li></Link>}
+        {location.pathname === '/' && <Link to='/login' style={{marginRight:'1rem'}}><li>Login</li></Link>}
         {location.pathname === '/' && <Link to='/register'><li>Register</li></Link>}
       </ul>
     </nav>
