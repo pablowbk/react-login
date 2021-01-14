@@ -7,11 +7,9 @@ function Login() {
     const fetchUsers = await fetch("http://localhost:5000/users/");
     const jsonRes = await fetchUsers.json();
     setUsers(jsonRes);
-    console.log(users)
   }
 
   useEffect(() => {
-    console.log('inside useEffect. Fetching...')
     fetchUsers();
   }, [])
 

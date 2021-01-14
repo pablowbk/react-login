@@ -62,10 +62,12 @@ a {
 
 .Background {
   position: absolute;
-  width: 100%;
-  height: 100vh;
+  /* width: 100%;
+  height: 100vh; */
   top: 0;
   left: 0;
+  bottom:0;
+  right: 0;
   background: #eee;
   background-image: linear-gradient(35deg, rgb(73, 205, 228), rgb(43, 138, 246) 70%);
   z-index: -1;
@@ -108,17 +110,20 @@ a {
   min-height: 70vh;
   padding: 0 2rem;
   margin-top: 3rem;
-  display: grid;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-  .Register header {
+.Register header {
   justify-self: start;
   display: grid;
   flex-direction: column;
   align-items: space-around ;
   gap: 2rem;
+  margin-bottom: 4rem;
 }
 
 .Register header h3 {
@@ -134,40 +139,29 @@ a {
 
 .Register form .input {
   display: grid;
-  gap: 1em;
-  grid-template-areas: 'label input';
-  grid-template-columns: 1fr 2fr;
+  gap: .5rem;
+  grid-template-areas: 'ee label ff' 'ee input ff';
   font-size: 1.2rem;
   align-items: center;
+  position: relative;
 }
 
-@media (max-width:500px) {
-  .Register form {
-    gap: 2rem;
-  }
-
-  .Register form .input {
-    grid-template-areas: 'label''input';
-    grid-template-columns: 1fr;
-    gap: .5rem;  
-    position: relative;
-  }
-
-  .Register form .input label, .Register form .input input {
-    text-align: left;
-  }
-
-}
 
 .Register form label {
   grid-area: label;
-  text-align: right;
   transform: scale(.8) translate(10px, 50px);
   transform-origin: 0 0;
   pointer-events: none;
   transition: transform 200ms;
   opacity: 0;
 }
+
+/* @media (min-width:500px) {
+  .Register form .input {
+    grid-template-areas: 'label input';
+    grid-template-columns: 1fr 2fr;
+  }
+} */
 
 .Register form .username-input:focus-within .usernameLabel {
   transform: scale(1) translate(0, 0);
@@ -196,6 +190,7 @@ a {
 .Register .infoTip {
   position: absolute;
   top: calc(100% + 5px);
+  left: .5rem;
   font-size: .75rem;
   opacity: 0;
   transition: opacity 250ms 100ms;
@@ -224,6 +219,22 @@ a {
   background:rgb(39, 126, 226);
 }
 
+@media (max-width:500px) {
+  .Register form {
+    gap: 2rem;
+  }
+
+  .Register form .input {
+    grid-template-areas: 'label''input';
+    grid-template-columns: 1fr;
+    
+  }
+
+  .Register form .input label, .Register form .input input {
+    text-align: left;
+  }
+
+}
 
 /* Login Component */
 .Login {
@@ -231,31 +242,32 @@ a {
   padding: 0 2rem;
   margin-top: 3rem;
   display: grid;
+  color: #fff;
 }
 
 .Login section {
-  justify-self: center;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
+  margin-top: 4rem;
+  display: grid;
+  align-items: start;
+  justify-items: start;
 }
 
 .Login section h3 {
   box-shadow: 0 2px 0px #666;
+  justify-self: start;
 }
 
 .Login section ul {
   margin-top: 1rem;
   list-style: none;
   text-align: center;
+  display: grid;
+  gap: .25rem;
 }
 
 .Login section li {
   padding: .5rem;
   font-weight: 600;
   color: rgb(33, 62, 124);
-}
-
-.Login section ul li:nth-child(odd) {
   background: #eee;
 }
