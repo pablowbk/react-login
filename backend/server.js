@@ -8,15 +8,27 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //DB Connection
-mongoose.connect(
-  process.env.DB_CONNECT,
-  {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  }, () => {
-    console.log('MongoDB connection established.')
+
+
+async function dbConnection() {
+  console.log('Connecting to MongoDB...')
+  try {
+    await mongoose.connect(
+      process.env.DB_CONNECT,
+      {
+        useUnifiedTopology: true,
+        useNewUrlParser: true
+      }
+    )
+    .then((db) => {
+      app.listen(port, () => {
+        console.log(`Listening Server @ port: ${port}...`);
+      })
+    })
+  } catch (err) {
+    console.log({'DBConnectionError': err})
   }
-)
+}
 
 
 //Routes
@@ -30,6 +42,4 @@ app.use(cors());
 app.use(express.json());
 app.use('/users', usersRoute);
 
-app.listen(port, () => {
-  console.log(`Listening Server @ port: ${port}...`);
-});
+dbConnection();

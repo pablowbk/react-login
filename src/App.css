@@ -38,12 +38,26 @@ a {
 
 .nav-links a {
   padding: .25rem .25rem;
+  position: relative;
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
-  box-shadow: 0 3px 0 var(--accentColor);
-  transition: box-shadow 250ms ease-in;
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: var(--accentColor);
+  transform: translateX(-10%);
+  opacity: 0;
+  transition: opacity 150ms ease-in, transform 150ms ease-in;
+}
+
+.nav-links a:hover::before,
+.nav-links a:focus::before {
+  opacity: .8;
+  transform: translateX(0);
 }
 
 .Background {
@@ -104,6 +118,7 @@ a {
   display: grid;
   flex-direction: column;
   align-items: space-around ;
+  gap: 2rem;
 }
 
 .Register header h3 {
@@ -135,6 +150,7 @@ a {
     grid-template-areas: 'label''input';
     grid-template-columns: 1fr;
     gap: .5rem;  
+    position: relative;
   }
 
   .Register form .input label, .Register form .input input {
@@ -146,6 +162,19 @@ a {
 .Register form label {
   grid-area: label;
   text-align: right;
+  transform: scale(.8) translate(10px, 50px);
+  transform-origin: 0 0;
+  pointer-events: none;
+  transition: transform 200ms;
+  opacity: 0;
+}
+
+.Register form .username-input:focus-within .usernameLabel {
+  transform: scale(1) translate(0, 0);
+}
+
+.Register form .email-input:focus-within .emailLabel {
+  transform: scale(1) translate(0, 0);
 }
 
 .Register form input {
@@ -156,23 +185,43 @@ a {
   font-size: 1.3rem;
   padding: .25rem .5rem;
   border-radius: 5px;
-  border-bottom: 2px solid var(--accentColor);
+  border-bottom: 3px solid var(--accentColor);
 }
 
 .Register form input::placeholder {
-  color: #ccc;
+  color: #fff;
+  opacity: 0;
+}
+
+.Register .infoTip {
+  position: absolute;
+  top: calc(100% + 5px);
+  font-size: .75rem;
+  opacity: 0;
+  transition: opacity 250ms 100ms;
+}
+
+.Register form .username-input:focus-within .infoTip, .Register form .email-input:focus-within .infoTip {
+  opacity: 1;
 }
 
 .Register button {
-  margin-top: 1rem;
+  margin-top: 2rem;
   border: none;
   font-size: 1.3rem;
   padding: .5rem 1rem;
   border-radius: 25px;
   border: 3px solid var(--mainColor);
+  border: none;
   background: var(--mainColor);
   color: #fff;
   cursor: pointer;
+  transition: box-shadow 250ms, background 250ms;
+}
+
+.Register button:hover, .Register button:focus {
+  box-shadow: 0 0 0 3px var(--accentColor);
+  background:rgb(39, 126, 226);
 }
 
 
