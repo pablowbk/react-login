@@ -18,7 +18,7 @@ function Login() {
       <section>
         <h3>List of active users:</h3>
         <ul>
-          {users.map(user => <li key={user._id}>{user.username}</li> )}
+          {users.map(user => <li key={user._id}><p><span>{user.username}</span> =&gt; <span>{user.email}</span></p></li> )}
         </ul>
       </section>
     </div>
