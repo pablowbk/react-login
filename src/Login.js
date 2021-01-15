@@ -3,8 +3,10 @@ import React, {useState, useEffect} from "react";
 function Login() {
   const [users, setUsers] = useState([]);
 
+  const api_url = process.env.REACT_APP_API_URL
+
   const fetchUsers = async () => {
-    const fetchUsers = await fetch("http://localhost:5000/users/");
+    const fetchUsers = await fetch(api_url);
     const jsonRes = await fetchUsers.json();
     setUsers(jsonRes);
   }
