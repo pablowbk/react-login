@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -10,8 +10,8 @@ import Register from './Register'
 import Background from './Background'
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
-  const [session, setSession] = useState(null);
+  //const [isLogged, setIsLogged] = useState(false);
+  //const [session, setSession] = useState(null);
 
   return (
     <BrowserRouter>
