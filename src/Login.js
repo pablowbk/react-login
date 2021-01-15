@@ -3,16 +3,16 @@ import React, {useState, useEffect} from "react";
 function Login() {
   const [users, setUsers] = useState([]);
 
-  const api_url = process.env.REACT_APP_API_URL
+  const api_url = process.env.REACT_APP_API_URL;
 
-  useEffect(() => {
-    const fetchUsers = async () => {
+const fetchUsers = async () => {
         const res = await fetch(api_url);
         const jsonRes = await res.json();
         setUsers(jsonRes);
      }
-    fetchUsers();
-  }, [])
+
+  useEffect(
+    fetchUsers(), [])
 
   return (
     <div className='Login'>
