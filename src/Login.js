@@ -5,7 +5,7 @@ function Login() {
   
   useEffect(()=> {
     const fetchUsers = async () => {
-        const res = await fetch(process.env.REACT_APP_API_URL);
+        const res = await fetch(process.env.REACT_APP_API_URL + '/users');
         const jsonRes = await res.json();
         setUsers(jsonRes);
       }
