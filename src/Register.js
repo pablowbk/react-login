@@ -16,7 +16,7 @@ function Register() {
     }
     
     if (userInput.username && userInput.email) {
-      await fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      await fetch('http://localhost:5000/users', {
         method: "POST",
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(userInput)
@@ -62,4 +62,4 @@ function Register() {
   )
 }
 
-export default Register;
+export default Register
