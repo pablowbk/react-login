@@ -5,13 +5,12 @@ function Login() {
 
   const api_url = process.env.REACT_APP_API_URL
 
-  const fetchUsers = async () => {
-    const fetchUsers = await fetch(api_url);
-    const jsonRes = await fetchUsers.json();
-    setUsers(jsonRes);
-  }
-
   useEffect(() => {
+    const fetchUsers = async () => {
+        const res = await fetch(api_url);
+        const jsonRes = await res.json();
+        setUsers(jsonRes);
+     }
     fetchUsers();
   }, [])
 
