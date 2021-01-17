@@ -11,17 +11,9 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-}
 body {
-  height: auto;
-  position: absolute;
-top: 0;
-bottom: 0;
-right: 0;
-left: 0;
-background-image: linear-gradient(35deg, rgb(73, 205, 228), rgb(43, 138, 246) 70%);
+  background-image: linear-gradient(35deg, rgb(73, 205, 228), rgb(43, 138, 246) 70%);
+  background-attachment: fixed;
 }
 
 .App {
